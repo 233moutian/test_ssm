@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+    如果有很多种类型的话，每次都得把类型的全路径写上，感觉就很费事。
+    所以就可以用mybatis提供的typeAliases来进行别名配置。
+    这样再mapper中直接用命名的
+    -->
+    <!-- 命名空间 -->
+    <typeAliases>
+        <package name="aode.ssm.model"/>
+    </typeAliases>
+
+    <!-- 分页插件 -->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="reasonable" value="true"/>
+            <property name="supportMethodsArguments" value="true"/>
+            <property name="returnPageInfo" value="check"/>
+            <property name="params" value="count=countSql"/>
+        </plugin>
+    </plugins>
+
+</configuration>
