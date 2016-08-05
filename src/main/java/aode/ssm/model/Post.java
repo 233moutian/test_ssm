@@ -2,8 +2,8 @@ package aode.ssm.model;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by ${周欣文} on 2016/8/1.
@@ -17,8 +17,10 @@ public class Post {
     private User author;    // 作者
 
     private Date postTime;  //提交时间
-    private Set<Reply> replies; // 帖子的回复
+//    @Transient
+//    private Set<Reply> replies; // 帖子的回复
     private int replyCount;     // 回复量
+    @Transient
     private Reply lastReply;    // 最后一条回复
 
     public User getAuthor() {
@@ -53,13 +55,13 @@ public class Post {
         this.postTime = postTime;
     }
 
-    public Set<Reply> getReplies() {
-        return replies;
-    }
-
-    public void setReplies(Set<Reply> replies) {
-        this.replies = replies;
-    }
+//    public Set<Reply> getReplies() {
+//        return replies;
+//    }
+//
+//    public void setReplies(Set<Reply> replies) {
+//        this.replies = replies;
+//    }
 
     public int getReplyCount() {
         return replyCount;

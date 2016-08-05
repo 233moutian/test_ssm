@@ -2,6 +2,7 @@ package aode.ssm.model;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -9,10 +10,14 @@ import java.util.Date;
  */
 @Table
 public class Reply {
+
     @Id
     private long id;
+
     private String content; // 回复内容
+    @Transient
     private Post post;  // 属于的帖子
+    @Transient
     private User user;  // 回复者
 
     private Date lastUpdateTime; // 最后修改时间

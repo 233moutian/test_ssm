@@ -2,24 +2,25 @@ package aode.ssm.model;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  * Created by Administrator on 2016/5/29.
  */
 @Table
 public class User {
+
     @Id
     private Long id;
     private String username;
+
     private String password;
-    @Transient
+
     private String gender;
-    @Transient
+
     private String phoneNumber;
-    @Transient
+
     private String email;
-    @Transient
+
     private String area;    // 此处去看AJAX的视频
 
     public void setGender(String gender) {
