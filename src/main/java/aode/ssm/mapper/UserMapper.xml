@@ -4,9 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="aode.ssm.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="aode.ssm.model.User">
+        <id column="u_id" property="u_id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="VARCHAR" />
+        <result column="phoneNumber" property="phoneNumber" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="area" property="area" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+
 
     <select id="findUserById" resultType="User" parameterType="int">
-    SELECT * FROM user WHERE id=#{value}
+    SELECT * FROM user WHERE u_id=#{value}
     </select>
 
 </mapper>

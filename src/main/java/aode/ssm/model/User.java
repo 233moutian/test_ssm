@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    private Long id;
+    private Long u_id;
     private String username;
 
     private String password;
@@ -55,8 +55,8 @@ public class User {
         return area;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long u_id) {
+        this.u_id = u_id;
     }
 
     public void setUsername(String username) {
@@ -68,7 +68,7 @@ public class User {
     }
 
     public Long getId() {
-        return id;
+        return u_id;
     }
 
     public String getUsername() {

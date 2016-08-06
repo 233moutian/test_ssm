@@ -7,28 +7,29 @@ import java.util.Date;
 
 /**
  * Created by ${周欣文} on 2016/8/1.
+ * 这个是多的那一端  加上一的那一端的id
  */
 @Table
 public class Reply {
 
     @Id
-    private long id;
-
+    private long r_id;
     private String content; // 回复内容
+    private Date lastUpdateTime; // 最后修改时间
+    private long post_id;
+
     @Transient
     private Post post;  // 属于的帖子
     @Transient
-    private User user;  // 回复者
-
-    private Date lastUpdateTime; // 最后修改时间
+    private User author;  // 回复者
 
 
-    public long getId() {
-        return id;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public String getContent() {
@@ -39,6 +40,14 @@ public class Reply {
         this.content = content;
     }
 
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
     public Post getPost() {
         return post;
     }
@@ -47,19 +56,19 @@ public class Reply {
         this.post = post;
     }
 
-    public User getUser() {
-        return user;
+    public long getPost_id() {
+        return post_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPost_id(long post_id) {
+        this.post_id = post_id;
     }
 
-    public Date getLastUpdateTime() {
-        return lastUpdateTime;
+    public long getR_id() {
+        return r_id;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setR_id(long r_id) {
+        this.r_id = r_id;
     }
 }

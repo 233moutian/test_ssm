@@ -4,24 +4,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by ${周欣文} on 2016/8/1.
+ * 这个是一的那一端
  */
 @Table
 public class Post {
     @Id
-    private long id;
+    private long p_id;
     private String title;   // 帖子标题
-                            // 帖子内容(即一楼),需要作者回复
-    private User author;    // 作者
-
     private Date postTime;  //提交时间
-//    @Transient
-//    private Set<Reply> replies; // 帖子的回复
-    private int replyCount;     // 回复量
+//  private int replyCount;     // 回复量----根据set的size就可以
+
+    @Transient              // 帖子内容(即一楼),需要作者回复
+    private User author;    // 作者
     @Transient
-    private Reply lastReply;    // 最后一条回复
+    private Set<Reply> replies; // 帖子的回复
+//    @Transient
+//    private Reply lastReply;    // 最后一条回复----关闭懒加载,直接取最后一条回复
+
 
     public User getAuthor() {
         return author;
@@ -31,20 +34,12 @@ public class Post {
         this.author = author;
     }
 
-    public long getId() {
-        return id;
+    public long getP_id() {
+        return p_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Reply getLastReply() {
-        return lastReply;
-    }
-
-    public void setLastReply(Reply lastReply) {
-        this.lastReply = lastReply;
+    public void setP_id(long p_id) {
+        this.p_id = p_id;
     }
 
     public Date getPostTime() {
@@ -55,20 +50,12 @@ public class Post {
         this.postTime = postTime;
     }
 
-//    public Set<Reply> getReplies() {
-//        return replies;
-//    }
-//
-//    public void setReplies(Set<Reply> replies) {
-//        this.replies = replies;
-//    }
-
-    public int getReplyCount() {
-        return replyCount;
+    public Set<Reply> getReplies() {
+        return replies;
     }
 
-    public void setReplyCount(int replyCount) {
-        this.replyCount = replyCount;
+    public void setReplies(Set<Reply> replies) {
+        this.replies = replies;
     }
 
     public String getTitle() {
