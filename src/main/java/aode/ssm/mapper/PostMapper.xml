@@ -7,16 +7,17 @@
     <resultMap id="BaseResultMap" type="aode.ssm.model.Post">
         <result column="p_id" property="p_id" jdbcType="BIGINT"/>
         <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="p_author" property="p_author" jdbcType="VARCHAR" />
         <result column="postTime" property="postTime" jdbcType="TIMESTAMP" />
-        <association property="author" javaType="User" >
-            <id column="u_id" property="u_id"/>
-            <result column="username" property="username" />
-            <result column="password" property="password" />
-            <result column="gender" property="gender" />
-            <result column="phoneNumber" property="phoneNumber" />
-            <result column="email" property="email" />
-            <result column="area" property="area" />
-        </association>
+        <!--<association property="author" javaType="User" >-->
+            <!--<id column="u_id" property="u_id"/>-->
+            <!--<result column="username" property="username" />-->
+            <!--<result column="password" property="password" />-->
+            <!--<result column="gender" property="gender" />-->
+            <!--<result column="phoneNumber" property="phoneNumber" />-->
+            <!--<result column="email" property="email" />-->
+            <!--<result column="area" property="area" />-->
+        <!--</association>-->
         <collection property="replies" column="p_id" ofType="Reply">
             <result column="r_id" property="r_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
             <result column="content" property="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
@@ -25,6 +26,14 @@
             <!-- 加个id -->
         </collection>
     </resultMap>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select p.title,p.postTime,r.content
+        from post AS p,reply AS r,user AS u
+        WHERE p.p_id= r.post_id
+    </select>
+
+
 
 
 

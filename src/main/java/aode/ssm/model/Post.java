@@ -16,22 +16,35 @@ public class Post {
     private long p_id;
     private String title;   // 帖子标题
     private Date postTime;  //提交时间
+    private String p_author;
+
+
 //  private int replyCount;     // 回复量----根据set的size就可以
 
-    @Transient              // 帖子内容(即一楼),需要作者回复
-    private User author;    // 作者
+//  @Transient              // 帖子内容(即一楼),需要作者回复
+//  private User author;    // 作者
     @Transient
     private Set<Reply> replies; // 帖子的回复
+
 //    @Transient
 //    private Reply lastReply;    // 最后一条回复----关闭懒加载,直接取最后一条回复
 
 
-    public User getAuthor() {
-        return author;
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
+
+
+    public String getP_author() {
+        return p_author;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setP_author(String p_author) {
+        this.p_author = p_author;
     }
 
     public long getP_id() {

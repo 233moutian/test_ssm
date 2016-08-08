@@ -7,17 +7,18 @@
     <resultMap id="BaseResultMap" type="aode.ssm.model.Reply" >
         <result column="r_id" property="r_id" jdbcType="BIGINT"/>
         <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="r_author" property="r_author" jdbcType="VARCHAR"/>
         <result column="lastUpdateTime" property="lastUpdateTime" jdbcType="TIMESTAMP"/>
         <result column="post_id" property="post_id" jdbcType="BIGINT"/>
-        <association property="author" javaType="User" >
-            <id column="u_id" property="u_id"/>
-            <result column="username" property="username" />
-            <result column="password" property="password" />
-            <result column="gender" property="gender" />
-            <result column="phoneNumber" property="phoneNumber" />
-            <result column="email" property="email" />
-            <result column="area" property="area" />
-        </association>
+        <!--<association property="author" javaType="User" >-->
+            <!--<id column="u_id" property="u_id"/>-->
+            <!--<result column="username" property="username" />-->
+            <!--<result column="password" property="password" />-->
+            <!--<result column="gender" property="gender" />-->
+            <!--<result column="phoneNumber" property="phoneNumber" />-->
+            <!--<result column="email" property="email" />-->
+            <!--<result column="area" property="area" />-->
+        <!--</association>-->
         <association property="post" javaType="Post" >
             <id column="p_id" property="p_id" />
             <result column="title" property="title" />

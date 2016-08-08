@@ -17,19 +17,30 @@ public class Reply {
     private String content; // 回复内容
     private Date lastUpdateTime; // 最后修改时间
     private long post_id;
+    private String r_author;  // 回复者
 
     @Transient
     private Post post;  // 属于的帖子
+
     @Transient
-    private User author;  // 回复者
+//    private User author;  // 回复者
 
 
-    public User getAuthor() {
-        return author;
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
+
+
+    public String getR_author() {
+        return r_author;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setR_author(String r_author) {
+        this.r_author = r_author;
     }
 
     public String getContent() {
