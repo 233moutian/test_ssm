@@ -4,7 +4,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by ${周欣文} on 2016/8/1.
@@ -24,7 +24,7 @@ public class Post {
 //  @Transient              // 帖子内容(即一楼),需要作者回复
 //  private User author;    // 作者
     @Transient
-    private Set<Reply> replies; // 帖子的回复
+    private List<Reply> replies; // 帖子的回复
 
 //    @Transient
 //    private Reply lastReply;    // 最后一条回复----关闭懒加载,直接取最后一条回复
@@ -63,11 +63,11 @@ public class Post {
         this.postTime = postTime;
     }
 
-    public Set<Reply> getReplies() {
+    public List<Reply> getReplies() {
         return replies;
     }
 
-    public void setReplies(Set<Reply> replies) {
+    public void setReplies(List<Reply> replies) {
         this.replies = replies;
     }
 
