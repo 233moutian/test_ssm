@@ -1,0 +1,20 @@
+package aode.ssm.controller;
+
+import aode.ssm.service.PostService;
+import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
+
+/**
+ * Created by ${周欣文} on 2016/8/1.
+ */
+@Controller
+public class PostController {
+    @Resource
+    private PostService PostService;
+
+
+
+
+
+}

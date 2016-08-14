@@ -42,9 +42,9 @@ public class PostService {
         postMapper.insert(post);
     }
 
-    public void deletePost(String content){
+    public void deletePost(long id){
         Post post = new Post();
-        post.setTitle(content);
+        post.setP_id(id);
         postMapper.delete(post);
     }
 

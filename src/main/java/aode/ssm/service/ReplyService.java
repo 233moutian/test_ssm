@@ -48,9 +48,14 @@ public class ReplyService {
         replyMapper.insert(reply);
     }
 
-    public void deletePost(String content){
+    public void deleteReply(long id){
         Reply reply = new Reply();
-        reply.setContent(content);
+        reply.setPost_id(id);
         replyMapper.delete(reply);
     }
+    // 传id和修改内容  空属性不会被修改进数据库
+    public void updateReply(Reply reply){
+        replyMapper.updateByPrimaryKeySelective(reply);
+    }
+
 }

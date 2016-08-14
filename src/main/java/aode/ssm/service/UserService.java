@@ -19,4 +19,21 @@ public class UserService {
         return userMapper.findUserById(id);
     }
 
+
+    public User login(User user) {
+        return userMapper.selectOne(user);
+    }
+
+    public void saveUser(User user) {
+        userMapper.insert(user);
+    }
+
+
+    public boolean selectByUserName(User user) {
+        if(userMapper.selectOne(user) != null){
+            return true;//有值
+        }else {
+            return false;
+        }
+    }
 }
