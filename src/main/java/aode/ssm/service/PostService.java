@@ -42,11 +42,13 @@ public class PostService {
         postMapper.insert(post);
     }
 
-    public void deletePost(long id){
+    public int deletePost(long id){
         Post post = new Post();
         post.setP_id(id);
-        postMapper.delete(post);
+        return postMapper.delete(post);
     }
 
-
+    public List getPostByComment(String comment){
+        return postMapper.getPostByComment(comment);
+    }
 }

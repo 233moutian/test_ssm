@@ -36,7 +36,7 @@ public class UserService {
             return false;
         }
     }
-
+    // 不对字段置空处理
     public int updateUser(User user){
         return userMapper.updateByPrimaryKeySelective(user);
     }

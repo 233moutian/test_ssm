@@ -18,7 +18,7 @@ import java.util.Map;
 public class ReplyService {
     @Autowired
     private ReplyMapper replyMapper;
-
+    // 前期测试
     public int test(){
         PageHelper.startPage(1, 10);
         List<Reply> list = replyMapper.selectAll();
@@ -48,14 +48,14 @@ public class ReplyService {
         replyMapper.insert(reply);
     }
 
-    public void deleteReply(long id){
+    public int deleteReply(long r_id){
         Reply reply = new Reply();
-        reply.setPost_id(id);
-        replyMapper.delete(reply);
+        reply.setR_id(r_id);
+        return replyMapper.delete(reply);
     }
     // 传id和修改内容  空属性不会被修改进数据库
-    public void updateReply(Reply reply){
-        replyMapper.updateByPrimaryKeySelective(reply);
+    public int updateReply(Reply reply){
+        return replyMapper.updateByPrimaryKeySelective(reply);
     }
 
 }

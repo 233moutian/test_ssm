@@ -82,13 +82,15 @@ public class UserController {
     }
 
     @RequestMapping("/updateUserMessage")
-    public String updateUserMassage(@Valid User user,Map<String,Object> map){
+    public String updateUserMassage(@Valid User user,Map<String,Object> map,
+                                    RedirectAttributes redirectAttributes){
         if (userService.updateUser(user) >= 1){
-            map.put("result","修改成功!");
+            redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "修改成功!"));
         } else{
-            map.put("result","修改失败!");
+            redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "修改失败!"));
         }
         map.put("user",user);
+        map.put("shengList",shengMapper.selectAll());
         return "userMassage";
     }
 
