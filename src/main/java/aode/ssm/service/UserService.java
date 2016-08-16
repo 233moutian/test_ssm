@@ -20,7 +20,7 @@ public class UserService {
     }
 
 
-    public User login(User user) {
+    public User getUser(User user) {
         return userMapper.selectOne(user);
     }
 
@@ -36,4 +36,9 @@ public class UserService {
             return false;
         }
     }
+
+    public int updateUser(User user){
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
+
 }
