@@ -14,16 +14,16 @@ public class FileUploadUtil {
     /**
      * 旅游信息浏览图片的保存位置
      */
-    public final static String TravelMessage_PATH = "/resources/file/travelMessage";
+//    public final static String TravelMessage_PATH = "/resources/file/travelMessage";
 
     /**
      * 附件的保存位置
      */
-    public final static String ATTACHMENT_PATH = "/resources/file/attachment";
+//    public final static String ATTACHMENT_PATH = "/resources/file/attachment";
     /**
-     * 产品图片的保存位置
+     * 上传图片的保存位置
      */
-    public final static String PRODUCT_PATH = "/resources/file/product";
+    public final static String ATTACHMENT_PATH = "/img";
 
 /*    *//**
      * 上传App
