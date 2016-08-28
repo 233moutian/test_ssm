@@ -13,9 +13,9 @@ import java.util.List;
 @Service("userService")
 public class UserService {
     @Autowired
-    private  UserMapper userMapper;
+    private UserMapper userMapper;
 
-    public List<User> list(int id)throws Exception{
+    public List<User> list(int id) throws Exception {
         return userMapper.findUserById(id);
     }
 
@@ -24,20 +24,21 @@ public class UserService {
         return userMapper.selectOne(user);
     }
 
-    public void saveUser(User user) {
-        userMapper.insert(user);
+    public int saveUser(User user) {
+        return userMapper.insert(user);
     }
 
 
     public boolean selectByUserName(User user) {
-        if(userMapper.selectOne(user) != null){
+        if (userMapper.selectOne(user) != null) {
             return true;//有值
-        }else {
+        } else {
             return false;
         }
     }
+
     // 不对字段置空处理
-    public int updateUser(User user){
+    public int updateUser(User user) {
         return userMapper.updateByPrimaryKeySelective(user);
     }
 

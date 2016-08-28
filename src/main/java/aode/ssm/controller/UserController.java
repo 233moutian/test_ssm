@@ -34,15 +34,8 @@ public class UserController {
             return "redirect:/WEB-INF/index";
         } else {
             redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "用户名或者密码错误"));
-            return "register";
+            return "saveuser";
         }
-    }
-
-    @RequestMapping("/zz")
-    public String zz(Map<String, Object> map) throws Exception {
-        map.put("usernamemessage","测试");
-        System.out.println(12312313);
-        return "register";
     }
 
     @RequestMapping(value = "logout")
@@ -64,24 +57,24 @@ public class UserController {
             map.put("message", "此用户名可以使用!");
         }
     }
-
+    // 注册
     @RequestMapping("/signup")
-    public String signup(@Valid User user, HttpServletRequest request) throws Exception {
+    public String signup(@Valid User user, HttpServletRequest request, HttpSession session) throws Exception {
         request.setCharacterEncoding("UTF-8");
-        userService.saveUser(user);
-        System.out.println(user);
-        return "redirect:/index.jsp";
+        user.setU_id((long)userService.saveUser(user));
+        session.setAttribute("loginUser",user);
+        return "post";
     }
-
+    // 回显
     @RequestMapping("/getUserMassage/{id}")
     public String getUserMassage(@PathVariable Integer id, Map<String, Object> map) {
         User user = new User();
         user.setU_id((long) id);
         userService.getUser(user);
         map.put("user", user);
-        return "userMassage";
+        return "saveuser";
     }
-
+    // 修改
     @RequestMapping("/updateUserMessage")
     public String updateUserMassage(@Valid User user, Map<String, Object> map,
                                     RedirectAttributes redirectAttributes) {
@@ -91,7 +84,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("result", new AjaxResult(false, "修改失败!"));
         }
         map.put("user", user);
-        return "userMassage";
+        return "post";
     }
 
 }

@@ -8,9 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/lib/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">CKEDITOR.replace('introduction')</script>
 </head>
 <body>
-
+<form action="" name="">
+    <textarea id="introduction" name="introduction" class="ckeditor">${}</textarea>
+</form>
 </body>
 </html>
