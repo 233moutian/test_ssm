@@ -9,23 +9,24 @@ import javax.persistence.Table;
 
 @Table
 public class Attachment {
-    private String fileName; //文件名用ＵＵＩＤ生成．作为ｉｄ    如果没有上传则使用默认图片default
+    @Id
+    private String name; //文件名用ＵＵＩＤ生成．作为ｉｄ    如果没有上传则使用默认图片default
     private String uid;      //附件所属的实体的id，因为不同类的都是使用这个，为了避免重复所以这类的id都有UUID
 
-    public Attachment(String fileName, String uid) {
-        this.fileName = fileName;
-        this.uid = uid;
-    }
     public Attachment() {
     }
 
-    @Id
-    public String getFileName() {
-        return fileName;
+    public Attachment(String uid, String name) {
+        this.uid = uid;
+        this.name = name;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUid() {
@@ -35,5 +36,4 @@ public class Attachment {
     public void setUid(String uid) {
         this.uid = uid;
     }
-
 }

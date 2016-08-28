@@ -8,45 +8,38 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
  * Created by ${周欣文} on 2016/8/3.
+ * 个人简单工具类,传入一个list<?>和地址即可得到一张表,
+ * 暂时只支持数据库varch和实体类String类型,其他类型会导致类型转化出错,
+ * 暂不支持多表查询,
  */
 public class ExportExcelUtil {
-    public static void export(List<?> list){
-        HSSFWorkbook wb = new HSSFWorkbook();
-        HSSFSheet sheet = wb.createSheet("这里写表名");       // 创建表单并设置其表名
-        HSSFRow tRow = sheet.createRow(0);      // 创建表单行
-        tRow.createCell(0).setCellValue("学号");  // 行头
-            // 这里写行头
-        if (list!=null) {
-            Field[] fields = list.get(0).getClass().getDeclaredFields();
-
-            for (int i = 0; i <= list.size(); i++){
-            tRow.createCell(i).setCellValue(fields[i].getName());  // 行头以list对象的
-            }
-
-            for (int i = 1; i <= list.size(); i++) {
-            HSSFRow tRows = sheet.createRow(i);
-            // Checkin checkin = checkinList.get(i - 1);  得到list里面的对象
-//            if (checkin.getS_id() != null) {
-//                DecimalFormat df = new DecimalFormat("0");
-//                String S_id = df.format(checkin.getS_id());
-//                rows.createCell(0).setCellValue(S_id);
-//            }
-//            if (checkin.getName() != null) {
-//                rows.createCell(1).setCellValue(checkin.getName());
-//            }
-
-            //赋值  有几个行写几个
-            }
-        }else{
+    public static void export(List<?> list,String path) throws Exception {
+        if (list == null&&list.size()<0) {      // 拦截.
             return;
         }
+        HSSFWorkbook wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet(list.get(0).getClass().getSimpleName());// 创建表单并设置其表名
+        HSSFRow tRow = sheet.createRow(0);       //创建一个单元格，从0开始
+        // 这里String类型的数组来解析list对象的泛型的方法名,作为行头名
+        String fileName[] = getFiledName(list.get(0).getClass().newInstance());
+        for(int i=0 ;i <fileName.length ;i++){
+            tRow.createCell(i).setCellValue(fileName[i]);
+        }
+        for (int i = 1;i<list.size();i++){
+            tRow = sheet.createRow(i);
+            for (int j = 0;j<fileName.length;j++){
+                tRow.createCell(j).setCellValue(((String) getFieldValueByName(fileName[j],list.get(i-1))));
+            }
+        }
         FileOutputStream out = null;
-        String path = "";   // 这里写生成的文件存放路径  跟上传图片的路径类似
-        File file = new File("文件名" + ".xlsx");
+        path = "";   // 这里写生成的文件存放路径  跟上传图片的路径类似
+//        File file = new File("D:\\" + list.get(0).getClass().getSimpleName() + ".xls");
+        File file = new File(path + ".xls");
         // 以下是输出文件
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
@@ -66,5 +59,30 @@ public class ExportExcelUtil {
         }
     }
 
+    // 得到list的泛型对象的属性名,作为表头--可用,但是不能传入一个泛型类型的
+    // 获取属性名数组
+    public static String[] getFiledName(Object o) {
+        Field[] fields = o.getClass().getDeclaredFields();
+        String[] fieldNames = new String[fields.length];
+        for (int i = 0; i < fields.length; i++) {
+//            System.out.println(fields[i].getType());
+            fieldNames[i] = fields[i].getName();
+        }
+        return fieldNames;
+    }
 
+    //根据属性名获取属性值-------------------可用
+    public static String getFieldValueByName(String fieldName, Object o) throws Exception{
+        try {
+            String firstLetter = fieldName.substring(0, 1).toUpperCase();
+            String getter = "get" + firstLetter + fieldName.substring(1);
+            Method method = o.getClass().getMethod(getter, new Class[]{});
+            String value = (String) method.invoke(o, new Object[]{});
+            return value;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 }

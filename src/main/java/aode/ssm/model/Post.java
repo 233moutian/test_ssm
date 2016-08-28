@@ -15,9 +15,19 @@ public class Post {
     @Id
     private long p_id;
     private String title;   // 帖子标题
-    private Date postTime;  //提交时间
+    private Date post_time;  //提交时间
     private String p_author;
 
+    @Transient
+    private Reply lastReply;
+
+    public Reply getLastReply() {
+        return lastReply;
+    }
+
+    public void setLastReply(Reply lastReply) {
+        this.lastReply = lastReply;
+    }
 
 //  private int replyCount;     // 回复量----根据set的size就可以
 
@@ -55,12 +65,12 @@ public class Post {
         this.p_id = p_id;
     }
 
-    public Date getPostTime() {
-        return postTime;
+    public Date getPost_time() {
+        return post_time;
     }
 
-    public void setPostTime(Date postTime) {
-        this.postTime = postTime;
+    public void setPost_time(Date post_time) {
+        this.post_time = post_time;
     }
 
     public List<Reply> getReplies() {
@@ -77,5 +87,17 @@ public class Post {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "lastReply=" + lastReply +
+                ", p_id=" + p_id +
+                ", title='" + title + '\'' +
+                ", post_time=" + post_time +
+                ", p_author='" + p_author + '\'' +
+                ", replies=" + replies +
+                '}';
     }
 }

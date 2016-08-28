@@ -15,7 +15,7 @@ public class Reply {
     @Id
     private long r_id;
     private String content; // 回复内容
-    private Date lastUpdateTime; // 最后修改时间
+    private Date last_update_time; // 最后修改时间
     private long post_id;
     private String r_author;  // 回复者
 
@@ -51,12 +51,12 @@ public class Reply {
         this.content = content;
     }
 
-    public Date getLastUpdateTime() {
-        return lastUpdateTime;
+    public Date getLast_update_time() {
+        return last_update_time;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public void setLast_update_time(Date last_update_time) {
+        this.last_update_time = last_update_time;
     }
 
     public Post getPost() {
@@ -81,5 +81,17 @@ public class Reply {
 
     public void setR_id(long r_id) {
         this.r_id = r_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Reply{" +
+                "content='" + content + '\'' +
+                ", r_id=" + r_id +
+                ", last_update_time=" + last_update_time +
+                ", post_id=" + post_id +
+                ", r_author='" + r_author + '\'' +
+                ", post=" + post +
+                '}';
     }
 }

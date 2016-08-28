@@ -19,8 +19,7 @@ public class ReplyServiceTest {
     @Test
     public void test1() throws Exception {
         ReplyService replyService = (ReplyService) applicationContext.getBean("replyService");
-        System.out.println(replyService.test());
-        // 测试成功
+
     }
 
 }

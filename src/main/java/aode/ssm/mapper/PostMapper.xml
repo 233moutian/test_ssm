@@ -22,18 +22,28 @@
             <result column="r_id" property="r_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
             <result column="content" property="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <result column="lastUpdateTime" property="lastUpdateTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <result column="r_author" property="r_author" javaType="java.lang.String" jdbcType="TIMESTAMP"/>
             <result column="post_id" property="post_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
             <!-- 加个id -->
         </collection>
     </resultMap>
 
     <select id="getAll" resultMap="BaseResultMap">
-        select p.title,p.postTime,r.content
-        from post AS p,reply AS r,user AS u
-        WHERE p.p_id= r.post_id
+        select *
+        from post p
+        LEFT JOIN reply r
+        ON p.p_id = r.post_id
     </select>
 
-
+    <select id="getPostByComment" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select *
+        from post p
+        LEFT JOIN reply r
+        ON p.p_id = r.post_id
+        <if test="title!=null">
+        and p.title LIKE '%${title}%'
+        </if>
+    </select>
 
 
 

@@ -36,4 +36,11 @@ public class AttachmentReply {
         this.rid = rid;
     }
 
+    @Override
+    public String toString() {
+        return "AttachmentReply{" +
+                "fileName='" + fileName + '\'' +
+                ", rid='" + rid + '\'' +
+                '}';
+    }
 }

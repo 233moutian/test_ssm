@@ -26,6 +26,10 @@
         </association>
     </resultMap>
 
+    <select id="">
 
+
+
+    </select>
 
 </mapper>
