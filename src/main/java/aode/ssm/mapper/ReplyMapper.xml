@@ -8,7 +8,7 @@
         <result column="r_id" property="r_id" jdbcType="BIGINT"/>
         <result column="content" property="content" jdbcType="VARCHAR"/>
         <result column="r_author" property="r_author" jdbcType="VARCHAR"/>
-        <result column="lastUpdateTime" property="lastUpdateTime" jdbcType="TIMESTAMP"/>
+        <result column="last_update_time" property="last_update_time" jdbcType="TIMESTAMP"/>
         <result column="post_id" property="post_id" jdbcType="BIGINT"/>
         <!--<association property="author" javaType="User" >-->
             <!--<id column="u_id" property="u_id"/>-->
@@ -22,14 +22,14 @@
         <association property="post" javaType="Post" >
             <id column="p_id" property="p_id" />
             <result column="title" property="title" />
-            <result column="postTime" property="postTime" />
+            <result column="post_time" property="post_time" />
+            <result column="p_author" property="p_author" />
         </association>
     </resultMap>
 
-    <select id="">
-
-
-
+    <select id="getReplyByPostId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+      SELECT * FROM reply r
+      WHERE r.post_id = #{id}
     </select>
 
 </mapper>

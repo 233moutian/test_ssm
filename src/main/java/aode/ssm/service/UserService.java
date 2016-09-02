@@ -24,10 +24,16 @@ public class UserService {
         return userMapper.selectOne(user);
     }
 
-    public int saveUser(User user) {
-        return userMapper.insert(user);
+    public int saveOrUpdateUser(User user) {
+        if(user.getU_id()==null){   // 注册
+            System.out.println("注册了");
+            return userMapper.insert(user);
+        }else{  // 修改
+            System.out.println("修改了");
+            userMapper.updateByPrimaryKeySelective(user);
+            return user.getU_id().intValue();
+        }
     }
-
 
     public boolean selectByUserName(User user) {
         if (userMapper.selectOne(user) != null) {

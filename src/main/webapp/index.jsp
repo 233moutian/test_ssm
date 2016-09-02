@@ -1,4 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,5 +14,8 @@
     <input type="submit" name="button" id="button" value="确定" >
 </form>
 ${result.msg}
+
+
+
 </body>
 </html>

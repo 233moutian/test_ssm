@@ -33,6 +33,10 @@ public class Post {
 
 //  @Transient              // 帖子内容(即一楼),需要作者回复
 //  private User author;    // 作者
+
+    public Post() {
+    }
+
     @Transient
     private List<Reply> replies; // 帖子的回复
 
@@ -65,7 +69,7 @@ public class Post {
         this.p_id = p_id;
     }
 
-    public Date getPost_time() {
+    public Date getPost_time()throws Exception {
         return post_time;
     }
 

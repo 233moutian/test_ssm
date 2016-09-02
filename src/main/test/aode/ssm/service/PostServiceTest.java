@@ -1,5 +1,6 @@
 package aode.ssm.service;
 
+import aode.ssm.controller.ReplyController;
 import aode.ssm.mapper.PostMapper;
 import aode.ssm.model.Post;
 import org.junit.Before;
@@ -7,6 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +16,15 @@ import java.util.Map;
  * Created by ${周欣文} on 2016/8/26.
  */
 public class PostServiceTest {
+    @Test
+    public void getOnePost() throws Exception {
+        Map<String,Object> map = new HashMap<String, Object>();
+        Post post = new Post();
+        post.setP_id(1);
+        ReplyController replyController = (ReplyController) applicationContext.getBean("replyController");
+        replyController.getReplyByPostId("1","1",map);
+    }
+
     private ApplicationContext applicationContext;
 
     //在setUp这个方法得到spring容器
@@ -25,8 +36,7 @@ public class PostServiceTest {
     @Test
     public void postList() throws Exception {
         PostService postService = (PostService) applicationContext.getBean("postService");
-        Map map = postService.postList(0);
-        List<Post> postList = (List<Post>) map.get("postList");
+        List<Post> postList = postService.postList(0);
         System.out.println(postList.size());
     }
 

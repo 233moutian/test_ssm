@@ -15,5 +15,5 @@ public interface PostMapper extends BaseMapper<Post> {
     List<Post> getAll();
 
     // 模糊查询
-    List<Post> getPostByComment(String title);
+    List<Post> getPostByContent(String title);
 }

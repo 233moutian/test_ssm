@@ -22,27 +22,6 @@ public class Reply {
     @Transient
     private Post post;  // 属于的帖子
 
-    @Transient
-//    private User author;  // 回复者
-
-
-//    public User getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(User author) {
-//        this.author = author;
-//    }
-
-
-    public String getR_author() {
-        return r_author;
-    }
-
-    public void setR_author(String r_author) {
-        this.r_author = r_author;
-    }
-
     public String getContent() {
         return content;
     }
@@ -73,6 +52,14 @@ public class Reply {
 
     public void setPost_id(long post_id) {
         this.post_id = post_id;
+    }
+
+    public String getR_author() {
+        return r_author;
+    }
+
+    public void setR_author(String r_author) {
+        this.r_author = r_author;
     }
 
     public long getR_id() {

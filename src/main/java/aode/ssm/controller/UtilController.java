@@ -52,7 +52,7 @@ public class UtilController {
 //                redirectAttributes.addFlashAttribute("result", new AjaxResult(false,
 //                        "上传的文件格式不正确（必须为.jpg/.gif/.bmp/.png文件）!"));
                 map.put("message","上传的文件格式不正确（必须为.jpg/.gif/.bmp/.png文件）!");
-                return "redirect:/index.jsp";
+                return "redirect:/jsp/index.jsp";
             }
             if (upload.getSize() > 600 * 1024) {
 //                redirectAttributes.addFlashAttribute("result", new AjaxResult(false,

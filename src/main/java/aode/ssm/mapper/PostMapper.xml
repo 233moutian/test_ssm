@@ -8,7 +8,7 @@
         <result column="p_id" property="p_id" jdbcType="BIGINT"/>
         <result column="title" property="title" jdbcType="VARCHAR" />
         <result column="p_author" property="p_author" jdbcType="VARCHAR" />
-        <result column="postTime" property="postTime" jdbcType="TIMESTAMP" />
+        <result column="post_time" property="post_time" jdbcType="TIMESTAMP" />
         <!--<association property="author" javaType="User" >-->
             <!--<id column="u_id" property="u_id"/>-->
             <!--<result column="username" property="username" />-->
@@ -21,7 +21,7 @@
         <collection property="replies" column="p_id" ofType="Reply">
             <result column="r_id" property="r_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
             <result column="content" property="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <result column="lastUpdateTime" property="lastUpdateTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <result column="last_update_time" property="last_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
             <result column="r_author" property="r_author" javaType="java.lang.String" jdbcType="TIMESTAMP"/>
             <result column="post_id" property="post_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
             <!-- 加个id -->
@@ -41,7 +41,7 @@
         LEFT JOIN reply r
         ON p.p_id = r.post_id
         <if test="title!=null">
-        and p.title LIKE '%${title}%'
+        and p.title LIKE '%#{title}%'
         </if>
     </select>
 
