@@ -60,8 +60,10 @@ public class UserController {
         user.setUsername(username);
         if (userService.selectByUserName(user)) {
             map.put("message", "此用户名已被占用!");
+            System.out.println("此用户名已被占用!");
         } else {
             map.put("message", "此用户名可以使用!");
+            System.out.println("此用户名可以使用!");
         }
     }
 

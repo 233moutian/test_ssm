@@ -24,7 +24,6 @@
                         cache: false,
                         dataType: "json",
                         error: function () {
-                            alert("出错了！！:");
                         },
                         success: function (data) {
                             alert("success:");

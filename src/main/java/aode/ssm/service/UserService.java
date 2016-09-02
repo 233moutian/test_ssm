@@ -24,10 +24,12 @@ public class UserService {
         return userMapper.selectOne(user);
     }
 
+    // 通用mapper 操作完成后的返回值int类型是返回操作影响的数据的行数.不是id或0 1
     public int saveOrUpdateUser(User user) {
         if(user.getU_id()==null){   // 注册
             System.out.println("注册了");
-            return userMapper.insert(user);
+            userMapper.insert(user);    // 先插再查
+            return userMapper.selectOne(user).getU_id().intValue();
         }else{  // 修改
             System.out.println("修改了");
             userMapper.updateByPrimaryKeySelective(user);
