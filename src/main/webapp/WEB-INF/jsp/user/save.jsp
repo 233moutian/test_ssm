@@ -25,9 +25,8 @@
                         dataType: "json",
                         error: function () {
                         },
-                        success: function (data) {
-                            alert("success:");
-                            $("#username").html(data);
+                        success: function (result) {
+                            alert(result.msg);
                         }
                     })
                 }
@@ -116,7 +115,7 @@
                 <td align="right" width="35%">用 户 名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td colspan="3"><input type="text" id="username" name="username" size="30" value="${requestScope.user.username}">
                 </td>
-                <td id="usernamemessage">${requestScope.message}</td>
+                <td id="#message"></td>
             </tr>
             <tr>
                 <td align="right">用户密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -127,7 +126,6 @@
                 <td align="right">确认密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td colspan="3"><input type="password" name="againPassword" id="againPassword" size="30"
                                        value=""/></td>
-                <td id="message"></td>
             </tr>
             <tr>
                 <td align="right">用户性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
